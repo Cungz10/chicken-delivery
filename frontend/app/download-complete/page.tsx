@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-function DownloadPageContent() {
+export default function DownloadPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [countdown, setCountdown] = useState(3);
 
   // Handle countdown timer
@@ -87,17 +86,5 @@ function DownloadPageContent() {
         }
       `}</style>
     </div>
-  );
-}
-
-export default function DownloadPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 md:p-8 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-indigo-600"></div>
-      </div>
-    }>
-      <DownloadPageContent />
-    </Suspense>
   );
 }
