@@ -1,0 +1,2 @@
+Rebuild trigger - TypeScript fix applied
+Commit: 25bbb52
