@@ -4,6 +4,8 @@ import { Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 function DownloadContent() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(3);
