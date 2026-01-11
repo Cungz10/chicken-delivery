@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-export default function DownloadPage() {
+function DownloadContent() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(3);
 
-  // Handle countdown timer
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(prev => prev - 1);
@@ -16,7 +16,6 @@ export default function DownloadPage() {
     return () => clearInterval(interval);
   }, []);
 
-  // Handle redirect when countdown reaches 0
   useEffect(() => {
     if (countdown <= 0) {
       router.push('/');
@@ -86,5 +85,12 @@ export default function DownloadPage() {
         }
       `}</style>
     </div>
+  );
+}
+export default function DownloadPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DownloadContent />
+    </Suspense>
   );
 }
