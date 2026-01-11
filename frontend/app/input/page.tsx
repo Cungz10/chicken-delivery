@@ -206,9 +206,10 @@ export default function InputPage() {
 
     if (closest) {
       items.forEach((item: Element) => item.classList.remove('active'));
-      closest.item.classList.add('active');
+      const closestItem = closest as { item: Element; distance: number };
+      closestItem.item.classList.add('active');
       
-      const value = parseInt(closest.item.getAttribute('data-value') || '0');
+      const value = parseInt(closestItem.item.getAttribute('data-value') || '0');
       if (type === 'whole') {
         setCurrentWhole(value);
       } else {
